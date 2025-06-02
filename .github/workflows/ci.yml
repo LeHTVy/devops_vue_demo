@@ -30,5 +30,9 @@ jobs:
           publish_dir: dist
       - name: Run tests with coverage
         run: npm run test:coverage --if-present
+      - name: Start Vite server
+        run: npm run dev &
+      - name: Wait for Vite server to start
+        run: npx wait-on http://localhost:5173
       - name: Run End-to-End Tests
         run: npx cypress run
