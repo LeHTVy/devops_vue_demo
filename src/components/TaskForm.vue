@@ -1,4 +1,5 @@
 <script setup>
+defineOptions({ name: 'TaskForm' })
 import { reactive, computed } from 'vue'
 
 const emit = defineEmits(['add-task'])
