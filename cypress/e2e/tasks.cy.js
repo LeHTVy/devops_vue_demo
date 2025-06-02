@@ -3,8 +3,11 @@
 describe('Task Manager', () => {
   it('should add a new task', () => {
     cy.visit('/')
-    cy.get('[data-cy="add-task-input"]').type('New Task')
-    cy.get('[data-cy="add-task-button"]').click()
-    cy.contains('New Task').should('exist')
+    // Click nút để mở form
+    cy.contains('button', 'Thêm nhiệm vụ mới').click()
+    // Sau đó mới tìm input
+    cy.get('[data-cy="add-task-input"]').type('Nhiệm vụ demo')
+    cy.get('form').submit()
+    cy.contains('Nhiệm vụ demo').should('exist')
   })
 })
