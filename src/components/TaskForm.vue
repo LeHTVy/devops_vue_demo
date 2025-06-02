@@ -123,7 +123,7 @@ const vCharLimit = {
           type="submit"
           :disabled="!isValid"
           :class="{ 'button-disabled': !isValid }"
-          data-cy="add-task-input"
+          data-cy="add-task-button"
         >
           Thêm nhiệm vụ
         </button>
