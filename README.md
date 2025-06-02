@@ -15,15 +15,13 @@ npm run dev
 npm run build
 
 
-## Test DevOps
 ## Deployment
 Ứng dụng được deploy tự động lên GitHub Pages thông qua workflow CI/CD.
 
 ## Code Coverage
 Để kiểm tra code coverage, chạy lệnh:
-```bash
 npm run test:coverage
-````
+
 
 ## Các Directive đã sử dụng trong ứng dụng
 
@@ -157,3 +155,4 @@ Vue 3 cung cấp các hook sau cho custom directive:
 
 - [Vue 3 Documentation - Directives](https://vuejs.org/guide/reusability/custom-directives.html)
 - [Vue 3 Style Guide](https://vuejs.org/style-guide/)
+````
