@@ -99,6 +99,7 @@ const vCharLimit = {
           placeholder="Nhập tiêu đề nhiệm vụ..."
           v-focus
           v-char-limit="50"
+          data-cy="add-task-input"
         />
         <p v-if="errors.title" class="error-message">{{ errors.title }}</p>
       </div>
@@ -118,7 +119,12 @@ const vCharLimit = {
       </div>
 
       <div class="form-actions">
-        <button type="submit" :disabled="!isValid" :class="{ 'button-disabled': !isValid }">
+        <button
+          type="submit"
+          :disabled="!isValid"
+          :class="{ 'button-disabled': !isValid }"
+          data-cy="add-task-input"
+        >
           Thêm nhiệm vụ
         </button>
       </div>
