@@ -296,16 +296,3 @@ button:hover {
   background-color: #3aa876;
 }
 </style>
-
-<!-- Test case -->
-<script>
-describe('Task Manager', () => {
-  it('should add a new task', () => {
-    cy.visit('/')
-    cy.get('button').contains('Thêm nhiệm vụ mới').click() // Mở form
-    cy.get('[data-cy="add-task-input"]').type('New Task')
-    cy.get('[data-cy="add-task-button"]').click()
-    cy.contains('New Task').should('exist')
-  })
-})
-</script>
