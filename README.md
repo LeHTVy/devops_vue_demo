@@ -14,6 +14,8 @@ npm run dev
 # Build cho production
 npm run build
 
+
+## Test DevOps
 ## Deployment
 Ứng dụng được deploy tự động lên GitHub Pages thông qua workflow CI/CD.
 
@@ -126,6 +128,7 @@ npm run test:coverage
    ```
 
 5. **v-count**: Hiệu ứng đếm số
+
    ```javascript
    app.directive('count', {
      mounted(el, binding) {
