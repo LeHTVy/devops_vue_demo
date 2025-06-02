@@ -30,7 +30,5 @@ jobs:
           publish_dir: dist
       - name: Run tests with coverage
         run: npm run test:coverage --if-present
-       - name: Run Unit Tests
-        run: npm run test:unit
       - name: Run End-to-End Tests
         run: npx cypress run
