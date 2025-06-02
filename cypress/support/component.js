@@ -18,6 +18,7 @@ import './commands'
 
 import { mount } from 'cypress/vue'
 
+// eslint-disable-next-line no-undef
 Cypress.Commands.add('mount', mount)
 
 // Example use:

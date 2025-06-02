@@ -1,19 +1,19 @@
-import { defineConfig } from "cypress";
+import { defineConfig } from 'cypress'
 
 export default defineConfig({
   video: false,
-  screenshotsFolder: "cypress/screenshots",
-  videosFolder: "cypress/videos",
+  screenshotsFolder: 'cypress/screenshots',
+  videosFolder: 'cypress/videos',
 
   e2e: {
-    setupNodeEvents(on, config) {},
-    baseUrl: "http://localhost:3000",
+    setupNodeEvents() {},
+    baseUrl: 'http://localhost:5173',
   },
 
   component: {
     devServer: {
-      framework: "vue",
-      bundler: "vite",
+      framework: 'vue',
+      bundler: 'vite',
     },
   },
-});
+})
