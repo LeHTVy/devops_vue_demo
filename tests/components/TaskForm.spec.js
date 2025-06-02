@@ -1,11 +1,31 @@
 import { mount } from '@vue/test-utils'
-import TaskManager from '@/components/TaskManager.vue'
+import TaskForm from '@/components/TaskForm.vue'
 import { test, expect } from 'vitest'
 
-test('hiển thị tiêu đề và mở form thêm nhiệm vụ', async () => {
-  const wrapper = mount(TaskManager)
-  expect(wrapper.find('h1').text()).toBe('Quản Lý Nhiệm Vụ')
-  const toggleBtn = wrapper.find('button')
-  await toggleBtn.trigger('click')
-  expect(wrapper.findComponent({ name: 'TaskForm' }).exists()).toBe(true)
+// Đăng ký directive focus giả lập
+const global = {
+  directives: {
+    focus: {
+      mounted: () => {},
+    },
+    'char-limit': {
+      mounted: () => {},
+    },
+  },
+}
+
+test('nhập tiêu đề và submit sẽ emit add-task', async () => {
+  const wrapper = mount(TaskForm, { global })
+
+  const input = wrapper.find('[data-cy="add-task-input"]')
+  await input.setValue('Nhiệm vụ demo')
+
+  await wrapper.find('form').trigger('submit.prevent')
+
+  const emitted = wrapper.emitted('add-task')
+  expect(emitted).toBeTruthy()
+  expect(emitted[0][0]).toMatchObject({
+    title: 'Nhiệm vụ demo',
+    priority: 'medium',
+  })
 })
