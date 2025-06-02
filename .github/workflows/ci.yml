@@ -23,3 +23,14 @@ jobs:
         run: npm run build
       - name: Test
         run: npm run test:unit --if-present
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: dist
+      - name: Run tests with coverage
+        run: npm run test:coverage --if-present
+       - name: Run Unit Tests
+        run: npm run test:unit
+      - name: Run End-to-End Tests
+        run: npx cypress run
