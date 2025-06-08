@@ -41,7 +41,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: test
     name: Performance Monitoring
-    # Bỏ condition này để chạy cho cả PR và main
 
     steps:
       - uses: actions/checkout@v4
@@ -69,9 +68,9 @@ jobs:
           configPath: './lighthouserc.json'
           uploadArtifacts: true
           temporaryPublicStorage: true
-        continue-on-error: true # Tránh fail toàn bộ workflow
+        continue-on-error: true
 
-      - name: Performance Report Comment
+      - name: Performance Report Comment (PR only)
         uses: actions/github-script@v7
         if: github.event_name == 'pull_request'
         with:
@@ -80,36 +79,51 @@ jobs:
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: '🚀 Lighthouse performance check completed! Check artifacts for detailed report.'
+              body: '🚀 Lighthouse performance check completed!'
             })
 
   deploy:
     runs-on: ubuntu-latest
     needs: [test, lighthouse]
     name: Deploy to Production
-    if: github.ref == 'refs/heads/main' # Chỉ deploy khi push lên main
 
     steps:
+      - name: Check if main branch
+        run: |
+          if [ "${{ github.ref }}" != "refs/heads/main" ]; then
+            echo "⏭️ Skipping deployment - not main branch"
+            echo "Current branch: ${{ github.ref }}"
+            echo "✅ All checks passed, ready for production when merged to main"
+            exit 0
+          fi
+
       - uses: actions/checkout@v4
+        if: github.ref == 'refs/heads/main'
+
       - name: Set up Node.js
+        if: github.ref == 'refs/heads/main'
         uses: actions/setup-node@v4
         with:
           node-version: '18'
           cache: 'npm'
 
       - name: Install dependencies
+        if: github.ref == 'refs/heads/main'
         run: npm ci
 
       - name: Build for production
+        if: github.ref == 'refs/heads/main'
         run: npm run build
 
       - name: Deploy to GitHub Pages
+        if: github.ref == 'refs/heads/main'
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: dist
 
       - name: Deployment Success Notification
+        if: github.ref == 'refs/heads/main'
         run: |
           echo "✅ Deployment successful!"
           echo "🚀 Live at: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}"
