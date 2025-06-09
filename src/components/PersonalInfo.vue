@@ -1,6 +1,6 @@
 <script setup>
 const courseInfo = {
-  courseName: 'Fronnt-End Web Development',
+  courseName: 'DevOps with Vue.js Task Management',
   courseCode: 'SW306DE01',
   instructor: 'Pham Hong Thanh',
   university: 'Hoa Sen University',
