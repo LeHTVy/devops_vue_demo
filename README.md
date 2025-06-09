@@ -18,48 +18,6 @@ npm run build
 
 Ứng dụng được deploy tự động lên GitHub Pages thông qua workflow CI/CD.
 
-## Code Coverage
-
-Để kiểm tra code coverage, chạy lệnh:
-npm run test:coverage
-
-## Các Directive đã sử dụng trong ứng dụng
-
-### Built-in Directives
-
-1. **v-model**: Binding hai chiều cho forms
-
-   - Ví dụ: `v-model="searchQuery"`, `v-model.trim="newTask.title"`
-   - Modifiers: `.trim` để loại bỏ khoảng trắng
-
-2. **v-bind (hoặc :)**: Binding một chiều
-
-   - Ví dụ: `:class="{ 'completed': task.completed }"`, `:style="{ width: `${stats.percentComplete}%` }"`
-
-3. **v-if/v-else**: Render có điều kiện
-
-   - Ví dụ: `v-if="showAddForm"`, `v-if="!isEditing"`, `v-else`
-
-4. **v-for**: Render danh sách
-
-   - Ví dụ: `v-for="task in filteredTasks" :key="task.id"`
-   - Với `:key` để tối ưu hóa render
-
-5. **v-on (hoặc @)**: Xử lý sự kiện
-
-   - Ví dụ: `@click="showAddForm = !showAddForm"`, `@submit.prevent="checkForm"`
-   - Modifiers: `.stop`, `.prevent`
-
-6. **v-show**: Toggle hiển thị (khác v-if ở chỗ element vẫn giữ trong DOM)
-
-   - Ví dụ: `v-show="filteredTasks.length > 0"`
-
-7. **v-text**: Binding text content
-
-   - Ví dụ: `v-text="task.title"`
-
-8. **v-html**: Binding HTML content (cẩn thận XSS)
-
 9. **v-once**: Render một lần duy nhất
 
 10. **v-memo**: Tối ưu hóa việc render lại
