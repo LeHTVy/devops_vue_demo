@@ -1,8 +1,8 @@
 <script setup>
 const courseInfo = {
   courseName: 'DevOps with Vue.js Task Management',
-  courseCode: 'SW306DE01',
-  instructor: 'Pham Hong Thanh',
+  courseCode: '515156',
+  instructor: '15165165165',
   university: 'Hoa Sen University',
   studentName1: 'Le Hoang Thao Vy',
   studentId1: '22118775',
